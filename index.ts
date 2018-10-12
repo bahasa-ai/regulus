@@ -22,7 +22,7 @@ import Regulus from './src/Regulus'
 import _Router from './src/BaseClass/Router'
 import _HandlerMiddleware from './src/BaseMiddleware/HandlerMiddleware'
 import _RouterMiddleware from './src/BaseMiddleware/RouterMiddleware'
-import * as HttpHandler from './src/Decorator/requestHandler'
+import * as HttpHandler from './src/Decorator/RequestHandler'
 
 export const Router = _Router
 
