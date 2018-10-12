@@ -1,30 +1,10 @@
 import * as express from 'express'
-import { HandlerArray, RequestHandlerMethod } from 'src/Types'
 
-export default function HandlerMiddelware(middleware: HandlerArray): Function {
-  return function (target: Object, methodName: string, descriptor: TypedPropertyDescriptor<express.RequestHandler> | TypedPropertyDescriptor<RequestHandlerMethod>) {
-    if (descriptor.value.prototype.__regulusRequestHandler__) {
-      const requestHandler = descriptor.value as RequestHandlerMethod
-      const requestHandlerValue = requestHandler()
+export default function HandlerMiddelware(middleware: Array<express.RequestHandler | express.ErrorRequestHandler>): Function {
+  return function (_, __, descriptor: TypedPropertyDescriptor<express.RequestHandler>) {
+    const handler = descriptor.value.prototype.__regulusRequestHandler__ || []
 
-      descriptor.value = function () {
-        return {
-          ...requestHandlerValue,
-          handler: [middleware, ...requestHandlerValue.handler]
-        }
-      }
-    } else {
-      const originalHandler = descriptor.value
-
-      descriptor.value = function () {
-        return {
-          original: originalHandler,
-          handler: [middleware]
-        }
-      }
-    }
-
-    descriptor.value.prototype.__regulusRequestHandler__ = true
+    descriptor.value.prototype.__regulusRequestHandler__ = [middleware, ...handler]
 
     return descriptor
   }
