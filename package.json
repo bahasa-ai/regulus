@@ -2,13 +2,18 @@
   "name": "regulus",
   "version": "0.0.1",
   "description": "Express.js wrapper on Typescript-style",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build.dev": "./node_modules/.bin/rimraf dist && ./node_modules/.bin/tslint -c tslint.json -p tsconfig.json && ./node_modules/.bin/tsc -w",
     "build": "./node_modules/.bin/rimraf dist && ./node_modules/.bin/tslint -c tslint.json -p tsconfig.json && ./node_modules/.bin/tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jundi Alwan <jundi@bahasa.ai> (bahasa.ai)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bahasa-ai/regulus.git"
+  },
   "license": "MIT",
   "devDependencies": {
     "@types/express": "^4.16.0",
