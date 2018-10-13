@@ -40,6 +40,4 @@ export const PUT = HttpHandler.HttpPUT
 
 export const DELETE = HttpHandler.HttpDELETE
 
-export const ANY = HttpHandler.HttpANY
-
 export default Regulus

@@ -1,5 +1,7 @@
 import * as express from 'express'
 import { Config } from './Types'
+import RegulusRouter from './BaseClass/Router'
+import registerRouter from './Helpers/RegisterRouter'
 
 class Regulus {
   private _server: express.Application
@@ -9,7 +11,24 @@ class Regulus {
     this._server = express()
     this._config = config
 
-    this._server.use(...this._config.use, ...this._config.router, ...this._config.errorHandler)
+    const extractedRouter = this.extractRouter(this._config.router)
+
+    this._server.use(...this._config.use, ...extractedRouter, ...this._config.errorHandler)
+  }
+
+  private extractRouter(routers: RegulusRouter[]): express.Router[] {
+    const extractedRouters = []
+
+    // Extract every Router
+    for (let i = 0; i < routers.length; i++) {
+      const router = routers[i]
+
+      const expressRouter = registerRouter(router)
+
+      extractedRouters.push(expressRouter)
+    }
+
+    return extractedRouters
   }
 
   public async start(callback?: Function) {
