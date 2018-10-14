@@ -7,6 +7,7 @@ class Router {
 
   constructor(basePath: string) {
     this.basePath = basePath
+    this._router = express.Router()
   }
 
   public get basePath(): string {

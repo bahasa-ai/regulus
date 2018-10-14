@@ -14,7 +14,7 @@ class Regulus {
   private _server: express.Application
   private _config: Config
 
-  constructor(config) {
+  constructor(config: Config) {
     this._server = express()
     this._config = {...defaultConfig, ...config}
 
@@ -24,18 +24,7 @@ class Regulus {
   }
 
   private extractRouter(routers: RegulusRouter[]): express.Router[] {
-    const extractedRouters = []
-
-    // Extract every Router
-    for (let i = 0; i < routers.length; i++) {
-      const router = routers[i]
-
-      const expressRouter = registerRouter(router)
-
-      extractedRouters.push(expressRouter)
-    }
-
-    return extractedRouters
+    return routers.map(router => registerRouter(router))
   }
 
   public async start(callback?: Function) {
