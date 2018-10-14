@@ -1,7 +1,7 @@
 {
   "name": "regulus",
   "version": "0.0.2",
-  "description": "Express.js wrapper on Typescript-style",
+  "description": "Minimalist Express.js wrapper library with Typescript-style",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
