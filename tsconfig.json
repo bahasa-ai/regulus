@@ -12,17 +12,13 @@
     "removeComments": true,
     "sourceMap": false,
     "experimentalDecorators": true,
-    "baseUrl": ".",
+    "baseUrl": "src",
     "outDir": "dist",
-    "declaration": true,
-    "typeRoots": [
-      "src/Types/index.ts"
-    ]
+    "declaration": true
   },
   "exclude": [
     "node_modules", 
     "**/__tests__/*", 
-    "dist",
-    "src/Types/index.ts"
+    "dist"
   ]
 }

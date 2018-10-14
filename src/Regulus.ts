@@ -1,13 +1,20 @@
 import * as express from 'express'
-import { Config } from './Types'
 import RegulusRouter from './BaseClass/Router'
 import registerRouter from './Helpers/RegisterRouter'
+import Router from './BaseClass/Router'
 
 const defaultConfig: Config = {
   port: 8888,
   use: [],
   router: [],
   errorHandler: []
+}
+
+type Config = {
+  port: number,
+  use?: express.RequestHandler[],
+  router?: Router[],
+  errorHandler?: (express.ErrorRequestHandler | express.RequestHandler)[]
 }
 
 class Regulus {

@@ -18,11 +18,11 @@
  * }).start()
  */
 
-import Regulus from './src/Regulus'
-import _Router from './src/BaseClass/Router'
-import _HandlerMiddleware from './src/BaseMiddleware/HandlerMiddleware'
-import _RouterMiddleware from './src/BaseMiddleware/RouterMiddleware'
-import * as HttpHandler from './src/Decorator/RequestHandler'
+import Regulus from './Regulus'
+import _Router from './BaseClass/Router'
+import _HandlerMiddleware from './BaseMiddleware/HandlerMiddleware'
+import _RouterMiddleware from './BaseMiddleware/RouterMiddleware'
+import * as HttpHandler from './Decorator/RequestHandler'
 
 export const Router = _Router
 

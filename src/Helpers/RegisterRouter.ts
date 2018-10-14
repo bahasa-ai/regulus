@@ -1,4 +1,4 @@
-import Router from 'src/BaseClass/Router'
+import Router from '../BaseClass/Router'
 import * as express from 'express'
 
 export default function(router: Router): express.Router {
