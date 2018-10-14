@@ -10,6 +10,7 @@
     "noImplicitAny": false,
     "moduleResolution": "node",
     "removeComments": true,
+    "sourceMap": false,
     "experimentalDecorators": true,
     "baseUrl": ".",
     "outDir": "dist",
