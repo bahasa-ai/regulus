@@ -20,9 +20,6 @@ class Router {
   public get router(): express.Router {
     return this._router
   }
-  public set router(value: express.Router) {
-    this._router = value
-  }
 
   public registerRouter(router: Router) {
     this._router.use(registerRouterHelper(router))
