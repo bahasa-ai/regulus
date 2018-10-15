@@ -30,6 +30,10 @@ class Regulus {
     this._config.errorHandler.forEach(u => this._server.use(u))
   }
 
+  public get server(): express.Application {
+    return this._server
+  }
+
   private extractRouter(routers: RegulusRouter[]): express.Router[] {
     return routers.map(router => registerRouter(router))
   }
