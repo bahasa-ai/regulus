@@ -18,26 +18,22 @@
  * }).start()
  */
 
+import * as express from 'express'
 import Regulus from './Regulus'
 import _Router from './BaseClass/Router'
-import _HandlerMiddleware from './BaseMiddleware/HandlerMiddleware'
-import _RouterMiddleware from './BaseMiddleware/RouterMiddleware'
+import _Middleware from './BaseMiddleware/Middleware'
 import * as HttpHandler from './Decorator/RequestHandler'
 
+export type ExpressRequest = express.Request
+export type ExpressResponse = express.Response
+export type ExpressNextFunction = express.NextFunction
+
 export const Router = _Router
-
-export const HandlerMiddleware = _HandlerMiddleware
-
-export const RouterMiddleware = _RouterMiddleware
-
+export const Middleware = _Middleware
 export const GET = HttpHandler.HttpGET
-
 export const POST = HttpHandler.HttpPOST
-
 export const PATCH = HttpHandler.HttpPATCH
-
 export const PUT = HttpHandler.HttpPUT
-
 export const DELETE = HttpHandler.HttpDELETE
 
 export default Regulus

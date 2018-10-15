@@ -1,6 +1,11 @@
 # Regulus
 Minimalist Express.js wrapper library with Typescript-style.
 
+# Changes
+- v0.0.5
+  - Merge HandlerMiddleware and RouterMiddleware into one, let you use the existing middleware on handler or router
+  - Export Express Request, Response, and NextFunction type as ExpressRequest, ExpressResponse, ExpressNextFunction so you don't have to install Express for the type
+
 ## Installation
 `npm i --save regulus`
 
@@ -177,15 +182,15 @@ router.get('/myRouter/ping', [
 ```
 'Very cool! How do we create custom decorator? I want to use my authentication middleware and logging middleware on it'
 
-That's when __'HandlerMiddleware'__ becomes handy. With HandlerMiddleware you could write your own express middleware decorator.
+That's when __'Middleware'__ becomes handy. With Middleware you could write your own express middleware decorator.
 
 ```typescript
-import { Router, GET, HandlerMiddleware } from 'regulus'
+import { Router, GET, Middleware } from 'regulus'
 import YourRouter from './YourRouter'
 
 function Logging() {
   // you could pass more than one express request handler inside one decorator middleware
-  return HandlerMiddleware([
+  return Middleware([
     (_, __, n) => {
       console.log('Logging start...')
       n()
@@ -239,17 +244,17 @@ Now, every time someone request /myRouter/ping, Logging middleware will be invok
 
 'Awesome! Now come to my mind router scope middleware'
 
-__'RouterMiddleware'__ never exist without a reason. You could also done the same thing with RouterMiddleware for router scope middleware.
+You could also use __'Middleware'__ for router scope middleware. Just attach it above the class header.
 
 ```typescript
-import { Router, GET, HandlerMiddleware } from 'regulus'
+import { Router, GET, Middleware } from 'regulus'
 import YourRouter from './YourRouter'
 
 ...
 
 function MyRouterLogging() {
   // you could pass more than one handler inside one decorator middleware
-  return RouterMiddleware([
+  return Middleware([
     (_, __, n) => {
       console.log('Logging start...')
       n()
