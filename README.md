@@ -1,7 +1,9 @@
 # Regulus
 Minimalist Express.js wrapper library with Typescript-style.
 
-## Changes
+## Changelog
+- v0.0.7
+  - Fixing bug on router level middleware 
 - v0.0.6
   - Merge HandlerMiddleware and RouterMiddleware into one, let you use the existing middleware on handler or router
   - Export Express Request, Response, and NextFunction type as ExpressRequest, ExpressResponse, ExpressNextFunction so you don't have to install Express for the type
