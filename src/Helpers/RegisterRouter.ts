@@ -7,7 +7,7 @@ export default function(router: Router): express.Router {
 
   // Register global router handler from Router if exist
   if (router.constructor.prototype.__regulusRequestHandler__) {
-    router.constructor.prototype.__regulusRequestHandler__.forEach(rrh => expressRouter.use(rrh))
+    router.constructor.prototype.__regulusRequestHandler__.forEach(rrh => expressRouter.use(`${router.basePath}`, rrh))
   }
 
   // Register leaf handler from Router
